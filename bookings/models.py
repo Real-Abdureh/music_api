@@ -4,7 +4,6 @@ from artists.models import ArtistProfile
 from events.models import Event
 
 class Booking(models.Model):
-    """Model for artist bookings"""
     organizer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="bookings")
     artist = models.ForeignKey(ArtistProfile, on_delete=models.CASCADE, related_name="bookings")
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="bookings")
@@ -18,7 +17,6 @@ class Booking(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
-        """Calculate total price before saving"""
         self.total_price = self.hours_booked * self.artist.price_per_hour
         super().save(*args, **kwargs)
 

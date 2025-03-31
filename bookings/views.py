@@ -4,7 +4,6 @@ from .models import Booking
 from .serializers import BookingSerializer
 
 class BookingCreateView(generics.CreateAPIView):
-    """API view to create a new booking"""
     serializer_class = BookingSerializer
     permission_classes = [permissions.IsAuthenticated]
 
@@ -15,7 +14,6 @@ class BookingCreateView(generics.CreateAPIView):
 
 
 class BookingDetailView(generics.RetrieveUpdateAPIView):
-    """API view to retrieve or update a booking"""
     serializer_class = BookingSerializer
     permission_classes = [permissions.IsAuthenticated]
 
@@ -36,7 +34,6 @@ class BookingDetailView(generics.RetrieveUpdateAPIView):
         serializer.save()
 
 class BookingListView(generics.ListAPIView):
-    """API view to list bookings for an organizer or artist"""
     serializer_class = BookingSerializer
     permission_classes = [permissions.IsAuthenticated]
 

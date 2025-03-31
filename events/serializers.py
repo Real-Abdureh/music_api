@@ -4,7 +4,6 @@ from artists.models import ArtistProfile
 from artists.serializers import ArtistProfileSerializer
 
 class EventSerializer(serializers.ModelSerializer):
-    """Serializer for event creation & updates"""
     organizer = serializers.StringRelatedField(read_only=True)
     artists = ArtistProfileSerializer(many=True, read_only=True)
     artist_ids = serializers.PrimaryKeyRelatedField(

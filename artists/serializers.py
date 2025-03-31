@@ -2,13 +2,13 @@ from rest_framework import serializers
 from .models import ArtistProfile, Genre
 
 class GenreSerializer(serializers.ModelSerializer):
-    """Serializer for music genres"""
+    
     class Meta:
         model = Genre
         fields = ['id', 'name']
 
 class ArtistProfileSerializer(serializers.ModelSerializer):
-    """Serializer for artist profile"""
+    
     user = serializers.StringRelatedField(read_only=True)  # Show username instead of ID
     genres = GenreSerializer(many=True, read_only=True)
     genre_ids = serializers.PrimaryKeyRelatedField(
